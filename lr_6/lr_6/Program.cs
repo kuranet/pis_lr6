@@ -43,7 +43,8 @@ namespace CalendarQuickstart
                 ApplicationName = ApplicationName,
             });
 
-            GetEvents(service);
+            //GetEvents(service);
+            AddEvent(service);
         }
 
         private static void GetEvents(CalendarService service)
@@ -78,6 +79,36 @@ namespace CalendarQuickstart
             }
 
             Console.Read();
+        }
+
+        private static void AddEvent(CalendarService service)
+        {
+            Event newEvent = new Event()
+            {
+                Summary = "Google I/O 2021",
+                Location = "800 Howard St., San Francisco, CA 94103",
+                Description = "A chance to hear more about Google's developer products.",
+                Start = new EventDateTime()
+                {
+                    DateTime = DateTime.Parse("2021-05-09T09:00:00-07:00"),
+                    TimeZone = "America/Los_Angeles",
+                },
+                End = new EventDateTime()
+                {
+                    DateTime = DateTime.Parse("2021-05-09T17:00:00-07:00"),
+                    TimeZone = "America/Los_Angeles",
+                },
+                Reminders = new Event.RemindersData()
+                {
+                    UseDefault = false,
+                    Overrides = new EventReminder[] {
+            new EventReminder() { Method = "email", Minutes = 60 },
+        }
+                }
+            };
+
+            EventsResource.InsertRequest request = service.Events.Insert(newEvent, TestCallendarId);
+            Event createdEvent = request.Execute();
         }
     }
 }
