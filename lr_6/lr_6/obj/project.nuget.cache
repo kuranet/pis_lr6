@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "nX76brzBsAcRr4Y4mceFPS5sWrXL0WUO5Yx4TNAciJT2hL9Gnov7lRa5gJO6lUflP384uOC+V+ykJiaJ4xBzoQ==",
+  "success": true,
+  "projectFilePath": "C:\\просто зачем, просто почему\\pis_lr6\\lr_6\\lr_6\\lr_6.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Anna\\.nuget\\packages\\google.apis\\1.51.0\\google.apis.1.51.0.nupkg.sha512",
+    "C:\\Users\\Anna\\.nuget\\packages\\google.apis.auth\\1.51.0\\google.apis.auth.1.51.0.nupkg.sha512",
+    "C:\\Users\\Anna\\.nuget\\packages\\google.apis.calendar.v3\\1.51.0.2305\\google.apis.calendar.v3.1.51.0.2305.nupkg.sha512",
+    "C:\\Users\\Anna\\.nuget\\packages\\google.apis.core\\1.51.0\\google.apis.core.1.51.0.nupkg.sha512",
+    "C:\\Users\\Anna\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
