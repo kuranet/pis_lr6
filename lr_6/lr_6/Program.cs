@@ -43,11 +43,14 @@ namespace CalendarQuickstart
                 ApplicationName = ApplicationName,
             });
 
-            //GetEvents(service);
+            var events = GetEvents(service);
+            RemoveEvent(service, events);
+            GetEvents(service);
+            
             AddEvent(service);
         }
 
-        private static void GetEvents(CalendarService service)
+        private static Events GetEvents(CalendarService service)
         {
             // Define parameters of request.
             EventsResource.ListRequest request = service.Events.List(TestCallendarId);
@@ -78,7 +81,7 @@ namespace CalendarQuickstart
                 Console.WriteLine("No upcoming events found.");
             }
 
-            Console.Read();
+            return events;
         }
 
         private static void AddEvent(CalendarService service)
@@ -109,6 +112,12 @@ namespace CalendarQuickstart
 
             EventsResource.InsertRequest request = service.Events.Insert(newEvent, TestCallendarId);
             Event createdEvent = request.Execute();
+        }
+
+        private static void RemoveEvent(CalendarService service, Events events)
+        {
+            var request = service.Events.Delete(TestCallendarId, events.Items[0].Id);
+            request.Execute();
         }
     }
 }
