@@ -44,7 +44,7 @@ namespace CalendarQuickstart
             });
 
             var events = GetEvents(service);
-            RemoveEvent(service, events);
+            //RemoveEvent(service, events);
             GetEvents(service);
             
             AddEvent(service);
@@ -88,9 +88,9 @@ namespace CalendarQuickstart
         {
             Event newEvent = new Event()
             {
-                Summary = "Google I/O 2021",
-                Location = "800 Howard St., San Francisco, CA 94103",
-                Description = "A chance to hear more about Google's developer products.",
+                Summary = "Kurenna IS-91",
+                Location = "KPI, FICS",
+                Description = "Some deadlines, i guess",
                 Start = new EventDateTime()
                 {
                     DateTime = DateTime.Parse("2021-05-09T09:00:00-07:00"),
