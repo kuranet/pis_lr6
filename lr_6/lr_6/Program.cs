@@ -4,12 +4,8 @@ using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace CalendarQuickstart
 {
@@ -19,6 +15,7 @@ namespace CalendarQuickstart
         // at ~/.credentials/calendar-dotnet-quickstart.json
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         static string ApplicationName = "Google Calendar API .NET Quickstart";
+        static string TestCallendarId = "j7mn4ovlihgmsud28lct5k2ilc@group.calendar.google.com";
 
         static void Main(string[] args)
         {
@@ -46,12 +43,18 @@ namespace CalendarQuickstart
                 ApplicationName = ApplicationName,
             });
 
+            GetEvents(service);
+        }
+
+        private static void GetEvents(CalendarService service)
+        {
             // Define parameters of request.
-            EventsResource.ListRequest request = service.Events.List("primary");
+            EventsResource.ListRequest request = service.Events.List(TestCallendarId);
+
             request.TimeMin = DateTime.Now;
+            request.TimeMax = DateTime.Now.AddDays(7);
             request.ShowDeleted = false;
             request.SingleEvents = true;
-            request.MaxResults = 10;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
             // List events.
@@ -62,7 +65,7 @@ namespace CalendarQuickstart
                 foreach (var eventItem in events.Items)
                 {
                     string when = eventItem.Start.DateTime.ToString();
-                    if (String.IsNullOrEmpty(when))
+                    if (string.IsNullOrEmpty(when))
                     {
                         when = eventItem.Start.Date;
                     }
@@ -73,8 +76,8 @@ namespace CalendarQuickstart
             {
                 Console.WriteLine("No upcoming events found.");
             }
-            Console.Read();
 
+            Console.Read();
         }
     }
 }
